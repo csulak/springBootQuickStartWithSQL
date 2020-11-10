@@ -33,3 +33,55 @@ Aprendi spring boot quick start aca:
 https://www.youtube.com/watch?v=99Nw2smMTLg&index=3&list=PLmbC-xnvykcghOSOJ1ZF6ja3aOgZAgaMO
 
 su pagina es: https://javabrains.thinkific.com/courses/springboot-quickstart
+
+
+
+
+
+
+==============================================
+=============================================
+
+
+creeamos una instancia de compute engine
+creamos una instancia de sql cloud
+instalamos google cloud sdk
+instalamos dbeaver
+https://www.youtube.com/watch?v=GwG6QgDL5yA
+el video explica como usar de forma local la instancia de sql creada en sql cloud
+
+ACLARACION: lo advierte en el video. pero cuidado que cuando bajamos y subimos la base en google puede cambiar la ip
+
+===========================================================================================================
+===========================================================================================================
+
+
+instalamos docker
+configuramos docker en nuestro proyecto. ver mi proyectito ahi va a estar el dockerfile
+y para que se cree y ejecute la imagen docker es:
+mvn clean package (obvio parados en nuestro proyecto)
+docker build -f Dockerfile -t app .
+docker run  -p 8081:8081 -t app
+
+
+===========================================================================================================
+===========================================================================================================
+DOCKER AND MORE
+
+PUSH IMAGE
+video explicativo: https://www.youtube.com/watch?v=pn0cPqUusRE
+
+generamos una nueva imagen de docker pero con el name que necesitamos que tenga para ser subida (pusheada)
+docker tag app gcr.io/my-first-project-on-gcp-lucas/app
+
+ACLARACION: cuando creas la imagen con el docker build bla bla, genera una nueva imagen. con "docker ps" podes ver las imageens creadas y tambien los nombres para saber con que armar el path del renglon de arriba. 
+"my-first-project-on-gcp-lucas" es el nombre de mi proyecto creado en GCP
+
+pusheamos la imagen (esto lo lance en la consola de google de la sdk que instale en la compu):
+docker push gcr.io/my-first-project-on-gcp-lucas/app
+
+ACLARACION: si el comando de arriba no te dejo completarlo por credenciales o algo parecido
+ejecutar: gcloud auth configure-docker
+y luego ejecutar el docker push bla bla
+y si nuevamente te sigue dando error: docker-credential-gcr configure-docker 
+y luego ejecutar el docker push bla bla
